@@ -3,20 +3,13 @@ import * as Store from './modules/local-storage.js';
 import UIDisplay from './modules/userInterface.js';
 import taskArr from './modules/taskarr.js';
 import removeTask from './modules/remove-storage.js';
-
-class Task {
-  constructor(description, completed, index) {
-    this.description = description;
-    this.completed = completed;
-    this.index = index;
-  }
-}
+import Task from './modules/task';
 
 const syncIcon = document.getElementById('sync');
 
 syncIcon.addEventListener('click', () => {
   taskArr.forEach((task) => { task.completed = true; });
-  const completed = taskArr.filter((task) => task.completed === true);
+  const completed = taskArr.filter((task) => task.completed);
   completed.forEach((task) => removeTask(task));
 });
 
